@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: client
@@ -15,13 +16,6 @@ spec:
         - name: client
           image: andreasgarvik/cab432-client
           imagePullPolicy: IfNotPresent
-          resources:
-            requests:
-              memory: "32Mi"
-              cpu: "100m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 3000
 ---
