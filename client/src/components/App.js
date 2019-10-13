@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
 
-const App = props => {
-	useEffect(() => {
-		props.twitterSearch()
-	})
-	return <div>Hi this is {props.twitter}</div>
+class App extends React.Component {
+	componentDidMount = () => {
+		this.props.twitterSearch()
+	}
+	render = () => {
+		return <div>The calculation took {this.props.twitter} ms</div>
+	}
 }
 
 const mapStateToProps = ({ twitter }) => {

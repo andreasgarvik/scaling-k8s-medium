@@ -1,0 +1,25 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+metadata:
+  name: assessment2
+build:
+  artifacts:
+    - image: andreasgarvik/cab432-client
+      context: client
+    - image: andreasgarvik/cab432-server
+      context: server
+  tagPolicy:
+    sha256: {}
+  local:
+    useBuildkit: false
+    useDockerCLI: false
+deploy:
+  kubectl:
+    manifests:
+      - k8s\*.yml
+profiles:
+  - build:
+      googleCloudBuild:
+        projectId: cab432-a2
+    deploy: {}
+    name: GKE

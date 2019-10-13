@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 // Routes
 const twitter = require('./routes/twitter')
-app.use('/api/twitter', twitter)
+app.use('/twitter', twitter)
 
 // Startup
 const PORT = process.env.PORT || 8080
