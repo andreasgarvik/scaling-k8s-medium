@@ -1,18 +1,12 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const helmet = require('helmet')
+const app = require('express')()
 
-// Config
-const app = express()
-app.use(cors())
-app.use(helmet())
-app.use(bodyParser.json())
+app.get('/', (req, res) => {
+	const start = Date.now()
+	for (let i = 0; i <= 1000000000; i++) {
+		let dummy = Math.log(i + 1)
+	}
+	const time = Date.now() - start
+	res.status(200).json(time)
+})
 
-// Routes
-const twitter = require('./routes/twitter')
-app.use('/twitter', twitter)
-
-// Startup
-const PORT = process.env.PORT || 8080
-app.listen(PORT)
+app.listen(8080)

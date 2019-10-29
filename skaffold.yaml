@@ -1,7 +1,7 @@
 apiVersion: skaffold/v1beta15
 kind: Config
 metadata:
-  name: assessment2
+  name: demo
 build:
   artifacts:
     - image: andreasgarvik/cab432-client
